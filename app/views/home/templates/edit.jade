@@ -1,0 +1,22 @@
+.panel.panel-info(style="position: fixed; z-index: 999")
+  .panel-heading 編輯圖片
+  .panel-body
+    .edit-tools
+    
+    .btn-group
+      .btn.btn-mini.undo-edit 撤銷
+      .btn.btn-mini.cancel-edit 取消
+      .btn.btn-mini.off-edit 退出
+    .clearfix
+    .edit-options
+    br
+    .edit-text
+      .control-group
+        label.control-label(for='title') 更改標題
+          .controls
+            input#title(name='title', type='text', placeholder='')
+      .control-group
+        label.control-label(for='ok')
+        .controls
+          button#ok.btn.btn-success(name='ok') 確定
+          button#defalut.btn.btn-danger(name='default') 恢復

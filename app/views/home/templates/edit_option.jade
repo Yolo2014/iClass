@@ -1,0 +1,24 @@
+.font-size.edit-option.hide
+  .row-fluid
+    span.span4 字體
+    select.span8(name='font-size')
+      - for (var x = 5; x <= 30; x++)
+        - if (x == 13)
+          option(selected='true')= x
+        - else
+          option= x
+
+.stroke-width.edit-option.hide
+  .row-fluid
+    span.span4 邊框大小
+
+    select.span8(name='stroke-width')
+      option(value='1') 小
+      option(value='3', selected='true') 中
+      option(value='5') 大
+      
+.color.edit-option.hide
+  .row-fluid
+    span.span4 顏色
+    .span8
+      input.d3-color(name='color', value='#000000')
