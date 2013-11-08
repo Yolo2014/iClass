@@ -1,15 +1,28 @@
-HomePageView = require 'views/home/page_view'
+LoginView = require 'views/resource/login_view'
+RegisterView = require 'views/resource/register_view'
 
 module.exports = class Router extends Backbone.Router
 
   routes:
     '': 'index'
     'home': 'home'
+    'login': 'login'
+    'register': 'register'
 
   index: ->
     @navigate 'home', trigger: true
 
   home: ->
-    pageView = new HomePageView()
-    $('#main-container').html pageView.el
-    pageView.render()
+    loginView = new LoginView()
+    $('#main-container').html loginView.el
+    loginView.render()
+ 
+  login: ->
+    loginView = new LoginView()
+    $('#main-container').html loginView.el
+    loginView.render()
+
+  register: ->
+    registerView = new RegisterView()
+    $('#main-container').html registerView.el
+    registerView.render()
