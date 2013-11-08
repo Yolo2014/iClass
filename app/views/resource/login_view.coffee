@@ -18,4 +18,4 @@ module.exports = class LoginView extends Backbone.View
 
   register: =>
     @$('#login').animate({'top': '100%'}, '1500')
-    router.navigate 'login', trigger: true
+    window.router.navigate 'register', trigger: true
