@@ -9,8 +9,8 @@ module.exports = class Router extends Backbone.Router
     'login': 'login'
     'register': 'register'
 
-  index: ->
-    @navigate 'home', trigger: true
+  # index: ->
+  #   @navigate 'home', trigger: true
 
   home: ->
     loginView = new LoginView()
