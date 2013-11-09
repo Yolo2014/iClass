@@ -15,8 +15,8 @@ exports.config =
       joinTo: 'javascripts/app.js'
 
   server:
-    port: 3334
+    port: 3333
 
   plugins:
     autoReload:
-      port: 4334
+      port: 4333
