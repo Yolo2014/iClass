@@ -2,13 +2,27 @@
   form.form-horizontal(role="form")
     .form-group
       input.user.form-control.input-lg(type="text", name="user", placeholder="用户名")
+    .user-info
+      .icon.icon-warn
+      blue 用于登入系统的账户名称，勿使用特殊字符
     .form-group
       input.email.form-control.input-lg(type="text", name="email", placeholder="Email")
+    .email-info
+      .icon.icon-warn
+      blue 常用的电子邮箱，用于找回密码
     .form-group
       input.pass.form-control.input-lg(type="password", name="pass", placeholder="密码")
+    .pass-info
+      .icon.icon-warn
+      blue 8-20位的字母或数字组合
     .form-group
-      input.pass2.form-control.input-lg(type="password", name="passcompare", placeholder="再次输入密码")
+      input.pass2.form-control.input-lg(type="password", name="pass-compare", placeholder="重复密码")
+    .pass2-info
+      .icon.icon-warn
+      blue 再一次输入密码进行确认
     .form-group
-      a(href="#").btn.btn-success.btn-lg.col-md-12.login 注  册
+      a(href="#").back.btn.btn-info.btn-lg.pull-right.col-md-3.register 返回
+
+      a(href="#").submit.btn.btn-success.btn-lg.col-md-8.login 注  册
 
   #info

@@ -3,22 +3,88 @@ module.exports = class RegisterView extends Backbone.View
   template: require './templates/register'
 
   events:
-    'focus .user': 'userFocus'
     'blur .user': 'userBlur'
+    'blur .email': 'emailBlur'
+    'blur .pass': 'passBlur'
+    'blur .pass2': 'pass2Blur'
+    'click .submit': 'register'
+    'click .back': 'back'
 
   render: =>
     @$el.html @template()
-    @$('#register').animate({'top': '30%'}, '1500')
+    @$('#register').animate({'top': '10%'}, '1500')
 
     this
 
-  userFocus: =>
-    @$('#info').html '<blue>用于登入系统的账户名称</blue>'
-
   userBlur: =>
-    if $('input[name=user]').val() is ''
-      @$('#info').html '<orange>用户名不能为空</orange>'
-      setTimeout =>
-        $('.user').focus()
-      ,
-        1000
+    user = $('input[name=user]').val()
+
+    if user is ''
+      @$('.user-info').html '<span class="icon icon-err"></span><orange>用户名不能为空</orange>'
+      # setTimeout => 
+      #   $('.user').focus()
+      # , 1000
+      return
+
+    $('.user-info').html  '<span class="icon icon-ok"></span>&nbsp;'
+
+  emailBlur: =>
+    reg = /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/
+    email = $('input[name=email]').val()
+
+    if !email.match reg
+      @$('.email-info').html '<span class="icon icon-err"></span><orange>请输入正确的Email地址，如tim@126.com</orange>'
+      return
+
+    $('.email-info').html  '<span class="icon icon-ok"></span>&nbsp;'
+
+  passBlur: =>
+    pass = $('input[name=pass]').val()
+
+    if pass is '' or pass.length < 8 or pass.length > 20
+      @$('.pass-info').html '<span class="icon icon-err"></span><orange>密码为必须为8至20位数字或字母组合</orange>'
+      return
+
+    $('.pass-info').html  '<span class="icon icon-ok"></span>&nbsp;'
+
+  pass2Blur: =>
+    pass = $('input[name=pass]').val()
+    pass2 = $('input[name=pass-compare]').val()
+
+    if pass is '' or pass.length < 8 or pass.length > 20
+      @$('.pass-info').html '<span class="icon icon-err"></span><orange>密码为必须为8至20位数字或字母组合</orange>'
+      return
+
+    if pass isnt pass2
+      @$('.pass2-info').html '<span class="icon icon-err"></span><orange>两次输入密码不一致</orange>'
+      return
+
+    $('.pass2-info').html  '<span class="icon icon-ok"></span>&nbsp;'
+
+  register: =>
+    # @userBlur()
+    # @emailBlur()
+    # @passBlur()
+    # @pass2Blur()
+    alertify.set
+      delay: 2000
+    alertify.success '注册成功！即将后返回登入页面。'
+
+    setTimeout =>
+      @$('#register').animate({'top': '100%'}, '1500')
+    ,
+      2000
+
+    setTimeout =>
+      window.router.navigate 'login', trigger: true
+    ,
+      2500
+
+
+  back: =>
+    @$('#register').animate({'top': '100%'}, '1500')
+
+    setTimeout =>
+      window.router.navigate 'login', trigger: true
+    ,
+      500
