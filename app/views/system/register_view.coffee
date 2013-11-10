@@ -12,7 +12,11 @@ module.exports = class RegisterView extends Backbone.View
 
   render: =>
     @$el.html @template()
-    @$('#register').animate({'top': '10%'}, '1500')
+
+    d_height = $(document).height()
+    r_height = $('#register').height()
+    top = (d_height - r_height) / 2
+    @$('#register').animate({'top': top}, 'slow')
 
     this
 
@@ -71,7 +75,7 @@ module.exports = class RegisterView extends Backbone.View
     alertify.success '注册成功！即将后返回登入页面。'
 
     setTimeout =>
-      @$('#register').animate({'top': '100%'}, '1500')
+      @$('#register').animate({'top': '100%'}, 'slow')
     ,
       2000
 
@@ -82,7 +86,7 @@ module.exports = class RegisterView extends Backbone.View
 
 
   back: =>
-    @$('#register').animate({'top': '100%'}, '1500')
+    @$('#register').animate({'top': '100%'}, 'slow')
 
     setTimeout =>
       window.router.navigate 'login', trigger: true

@@ -1,5 +1,6 @@
-LoginView = require 'views/resource/login_view'
-RegisterView = require 'views/resource/register_view'
+LoginView = require 'views/system/login_view'
+RegisterView = require 'views/system/register_view'
+PlatformView = require 'views/system/platform_view'
 
 module.exports = class Router extends Backbone.Router
 
@@ -8,21 +9,28 @@ module.exports = class Router extends Backbone.Router
     'home': 'home'
     'login': 'login'
     'register': 'register'
+    'platform': 'platform'
+
 
   # index: ->
   #   @navigate 'home', trigger: true
 
   home: ->
-    loginView = new LoginView()
-    $('#main-container').html loginView.el
-    loginView.render()
+    view = new LoginView()
+    $('#main-container').html view.el
+    view.render()
  
   login: ->
-    loginView = new LoginView()
-    $('#main-container').html loginView.el
-    loginView.render()
+    view = new LoginView()
+    $('#main-container').html view.el
+    view.render()
 
   register: ->
-    registerView = new RegisterView()
-    $('#main-container').html registerView.el
-    registerView.render()
+    view = new RegisterView()
+    $('#main-container').html view.el
+    view.render()
+
+  platform: ->
+    view = new PlatformView()
+    $('#main-container').html view.el
+    view.render()
