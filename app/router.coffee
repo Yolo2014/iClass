@@ -1,6 +1,7 @@
 LoginView = require 'views/system/login_view'
 RegisterView = require 'views/system/register_view'
 PlatformView = require 'views/system/platform_view'
+CourseView = require 'views/resource/course_view'
 
 module.exports = class Router extends Backbone.Router
 
@@ -10,6 +11,7 @@ module.exports = class Router extends Backbone.Router
     'login': 'login'
     'register': 'register'
     'platform': 'platform'
+    'course': 'course'
 
 
   # index: ->
@@ -32,5 +34,10 @@ module.exports = class Router extends Backbone.Router
 
   platform: ->
     view = new PlatformView()
+    $('#main-container').html view.el
+    view.render()
+
+  course: ->
+    view = new CourseView()
     $('#main-container').html view.el
     view.render()

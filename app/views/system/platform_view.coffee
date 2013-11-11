@@ -22,3 +22,17 @@ module.exports = class PlatformView extends Backbone.View
     @$('#platform').animate({'top': top, 'left': left}, 'slow')
 
     this
+
+  resource: =>
+    @$('#platform').animate({'top': '100%'}, 'slow')
+    setTimeout =>
+      window.router.navigate 'course', trigger: true
+    ,
+      500
+
+  manage: =>
+    @$('#platform').animate({'top': '100%'}, 'slow')
+    setTimeout =>
+      window.router.navigate 'manage', trigger: true
+    ,
+      500
