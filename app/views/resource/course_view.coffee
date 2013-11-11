@@ -26,19 +26,21 @@ module.exports = class CourseView extends Backbone.View
     this
 
   literature: =>
+    window.course.subject = 
+      id: 1
+      title: '人教版语文'
+
     @$('#course').animate({'top': '100%'}, 'slow')
     setTimeout =>
-      view = new TermView
-        subject: '人教版语文'
-      $('#main-container').html view.el
-      view.render()
+      window.router.navigate 'term', trigger: true
     , 500
 
   mathematic: =>
+    window.course.subject = 
+      id: 2
+      title: '人教版数学'
+
     @$('#course').animate({'top': '100%'}, 'slow')
     setTimeout =>
-      view = new TermView
-        subject: '人教版数学'
-      $('#main-container').html view.el
-      view.render()
+      window.router.navigate 'term', trigger: true
     , 500

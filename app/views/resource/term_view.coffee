@@ -1,11 +1,8 @@
-LessonView = require 'views/resource/lesson_view'
-
 module.exports = class TermView extends Backbone.View
   template: require './templates/term'
 
   events:
-    'click .termx': 'renderLesson'
-    
+    'click .termx': 'renderMenu'    
 
   render: =>
     @$el.html @template()
@@ -21,16 +18,14 @@ module.exports = class TermView extends Backbone.View
     $('#term').css 
       'left': left
 
-    @$('#term').animate({'top': top, 'left': left}, 'slow')
+    @$('#term').animate({'top': top}, 'slow')
 
     this
 
-  renderLesson: (e) =>
+  renderMenu: (e) =>
+    term = $(e.currentTarget).attr 'data-number'
+
     @$('#term').animate({'top': '100%'}, 'slow')
     setTimeout =>
-      view = new LessonView
-        subject: @options.subject
-        term: $(e.currentTarget).attr 'data-number'
-      $('#main-container').html view.el
-      view.render()
+      window.router.navigate "menu/#{term}", trigger: true
     , 500
