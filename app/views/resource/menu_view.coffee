@@ -2,6 +2,9 @@ module.exports = class MenuView extends Backbone.View
   template: require './templates/menu'
 
   # initialize: =>
+
+  events:
+    'click .menu': 'renderLesson'
     
 
   render: =>
@@ -41,3 +44,11 @@ module.exports = class MenuView extends Backbone.View
     @$('#menu').animate({'top': top}, 'slow')
 
     this
+
+  renderLesson: (e) =>
+    lesson = $(e.currentTarget).data 'number'
+    $('#menu').fadeOut('slow')
+
+    setTimeout =>
+      window.router.navigate "lesson/#{lesson}", trigger: true
+    ,500

@@ -23,8 +23,8 @@ module.exports = class TermView extends Backbone.View
     this
 
   renderMenu: (e) =>
-    term = $(e.currentTarget).attr 'data-number'
-
+    # term = $(e.currentTarget).attr 'data-number'
+    term = $(e.currentTarget).data('number')
     @$('#term').animate({'top': '100%'}, 'slow')
     setTimeout =>
       window.router.navigate "menu/#{term}", trigger: true
