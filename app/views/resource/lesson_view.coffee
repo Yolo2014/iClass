@@ -2,8 +2,8 @@ module.exports = class LessonView extends Backbone.View
   template: require './templates/lesson'
 
   events:
-    'mouseover #top-menu': 'topShow'
-    'mouseout #top-menu': 'topHide'
+    'mouseover #right-menu': 'rightShow'
+    'mouseout #right-menu': 'rightHide'
     'mouseover #left-menu': 'leftShow'
     'mouseout #left-menu': 'leftHide'
     'mouseover #bottom-menu': 'bottomShow'
@@ -17,31 +17,33 @@ module.exports = class LessonView extends Backbone.View
 
     $('#left-menu').css
       height: d_height
+    $('#right-menu').css
+      height: d_height
 
     $('#lesson-container').css
       width: d_width
       height: d_height
 
 
-    setTimeout =>
-      @$('#top-menu').animate({'top': -49}, 'slow')
+    setTimeout =>      
       @$('#left-menu').animate({'left': -249}, 'slow')
+      @$('#right-menu').animate({'right': -49}, 'slow')
       @$('#bottom-menu').animate({'bottom': -49}, 'slow')
     , 3000
 
     this
-
-  topShow: =>
-    @$('#top-menu').animate({'top': -10}, 'slow')
-
-  topHide: => 
-    @$('#top-menu').animate({'top': -49}, 'slow') 
 
   leftShow: =>
     @$('#left-menu').animate({'left': -10}, 'slow')
 
   leftHide: =>
     @$('#left-menu').animate({'left': -249}, 'slow')
+
+  rightShow: =>
+    @$('#right-menu').animate({'right': -10}, 'slow')
+
+  rightHide: => 
+    @$('#right-menu').animate({'right': -49}, 'slow') 
 
   bottomShow: =>
     @$('#bottom-menu').animate({'bottom': -10}, 'slow')
