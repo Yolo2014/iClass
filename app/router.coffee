@@ -5,6 +5,7 @@ CourseView = require 'views/resource/course_view'
 TermView = require 'views/resource/term_view'
 MenuView = require 'views/resource/menu_view'
 LessonView = require 'views/resource/lesson_view'
+HomeView = require 'views/pointer/pointer_view'
 
 module.exports = class Router extends Backbone.Router
 
@@ -20,11 +21,11 @@ module.exports = class Router extends Backbone.Router
     'lesson/:id': 'lesson'
 
 
-  # index: ->
-  #   @navigate 'home', trigger: true
+  index: ->
+    @navigate 'home', trigger: true
 
   home: ->
-    view = new LoginView()
+    view = new HomeView()
     $('#main-container').html view.el
     view.render()
  
