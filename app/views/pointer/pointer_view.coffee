@@ -1,3 +1,5 @@
+OptionView = require 'views/pointer/option_view'
+
 module.exports = class PointerView extends Backbone.View
   template: require './templates/pointer'
 
@@ -25,4 +27,6 @@ module.exports = class PointerView extends Backbone.View
     d3.pointer.drag.events().leave()
 
   tool: (e) =>
-    console.log e.target.type
+    new OptionView
+      el: @$('#tool-option')
+      type: $(e.currentTarget).data('type')

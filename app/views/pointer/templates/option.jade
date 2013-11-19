@@ -1,0 +1,21 @@
+.font-size.option.hide
+  | 字号
+  select(name='font-size')
+    - for (var x = 8; x <= 30; x++)
+      - if (x == 13)
+        option(selected='true')= x
+      - else
+        option= x
+
+.stroke-width.option.hide
+  | 笔触
+  select(name='stroke-width')
+    - for (var x = 1; x <= 10; x++)
+      - if (x == 3)
+        option(selected='true')= x
+      - else
+        option= x
+
+.color.option.hide
+  | 顏色
+  .d3-color.color-picker

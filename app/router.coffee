@@ -5,7 +5,8 @@ CourseView = require 'views/resource/course_view'
 TermView = require 'views/resource/term_view'
 MenuView = require 'views/resource/menu_view'
 LessonView = require 'views/resource/lesson_view'
-HomeView = require 'views/pointer/pointer_view'
+PointerView = require 'views/pointer/pointer_view'
+HomeView = require 'views/home/page_view'
 
 module.exports = class Router extends Backbone.Router
 
